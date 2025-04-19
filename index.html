@@ -23,26 +23,6 @@
         <div id="unity-build-title">Land Of Might</div>
       </div>
     </div>
-<script>
-// Firefox CORS Fix
-if(navigator.userAgent.includes("Firefox")) {
-  // Patch Unity's WebRequest
-  var originalSend = XMLHttpRequest.prototype.send;
-  XMLHttpRequest.prototype.send = function(body) {
-    this.withCredentials = false; // Critical for Firefox
-    originalSend.call(this, body);
-  };
-
-  // Force enable CORS
-  var originalOpen = XMLHttpRequest.prototype.open;
-  XMLHttpRequest.prototype.open = function(method, url) {
-    originalOpen.apply(this, arguments);
-    if(url.includes("api.github.com")) {
-      this.setRequestHeader('Access-Control-Allow-Origin', '*');
-    }
-  };
-}
-</script>
     <script>
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
