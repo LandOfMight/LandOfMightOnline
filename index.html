@@ -23,9 +23,8 @@
         <div id="unity-build-title">Land Of Might</div>
       </div>
     </div>
-<script>
-  // Firefox-specific CORS override
-  if(navigator.userAgent.includes("Firefox")) {
+    <script>
+if(navigator.userAgent.includes("Firefox")) {
     XMLHttpRequest.prototype.open = function() {
       let original = XMLHttpRequest.prototype.open;
       return function() {
@@ -35,8 +34,6 @@
       };
     }();
   }
-</script>
-    <script>
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
