@@ -24,16 +24,13 @@
       </div>
     </div>
     <script>
-if(navigator.userAgent.includes("Firefox")) {
-    XMLHttpRequest.prototype.open = function() {
-      let original = XMLHttpRequest.prototype.open;
-      return function() {
-        original.apply(this, arguments);
+      (function() {
+        const originalOpen = XMLHttpRequest.prototype.open;
+       XMLHttpRequest.prototype.open = function() {
+       originalOpen.apply(this, arguments);
         this.setRequestHeader('Access-Control-Allow-Origin', '*');
-        this.setRequestHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-      };
-    }();
-  }
+       };
+        })();
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
