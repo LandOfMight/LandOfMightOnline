@@ -24,16 +24,11 @@
       </div>
     </div>
 <script>
-// Firefox CORS Fix
-if(navigator.userAgent.includes("Firefox")) {
-  // Patch Unity's WebRequest
   var originalSend = XMLHttpRequest.prototype.send;
   XMLHttpRequest.prototype.send = function(body) {
-    this.withCredentials = false; // Critical for Firefox
-    originalSend.call(this, body);
-  };
+  this.withCredentials = false;
+  originalSend.call(this, body);
 
-  // Force enable CORS
   var originalOpen = XMLHttpRequest.prototype.open;
   XMLHttpRequest.prototype.open = function(method, url) {
     originalOpen.apply(this, arguments);
